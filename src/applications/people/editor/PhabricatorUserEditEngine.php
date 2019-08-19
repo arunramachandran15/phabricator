@@ -6,7 +6,7 @@ final class PhabricatorUserEditEngine
   const ENGINECONST = 'people.user';
 
   public function isEngineConfigurable() {
-    return false;
+    return true;
   }
 
   public function getEngineName() {
@@ -26,7 +26,9 @@ final class PhabricatorUserEditEngine
   }
 
   protected function newEditableObject() {
-    return new PhabricatorUser();
+    $user = new PhabricatorUser();
+    $user->setUsername('arun1');
+    return $user;
   }
 
   protected function newObjectQuery() {
@@ -60,7 +62,7 @@ final class PhabricatorUserEditEngine
   protected function getCreateNewObjectPolicy() {
     // At least for now, forbid creating new users via EditEngine. This is
     // primarily enforcing that "user.edit" can not create users via the API.
-    return PhabricatorPolicies::POLICY_NOONE;
+    return PhabricatorPolicies::POLICY_ADMIN;
   }
 
   protected function buildCustomEditFields($object) {

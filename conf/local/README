@@ -1,1 +1,27 @@
 Run bin/config to work with this directory.
+
+echo "{" >> /var/www/phabricator/conf/local/local.json
+echo '"mysql.host" : "phabricatordb.c6ggtjneld1s.us-east-1.rds.amazonaws.com",'  >> /var/www/phabricator/conf/local/local.json
+echo '"mysql.port" : "3306",'   >> /var/www/phabricator/conf/local/local.json
+echo '"mysql.user" : "admin",'   >> /var/www/phabricator/conf/local/local.json
+echo '"mysql.pass" : "Monmon123"'    >> /var/www/phabricator/conf/local/local.json
+echo '}'   >> /var/www/phabricator/conf/local/local.json
+
+sed -E -i.bak 's#remotesql.com#remotemysql.com#' local.json
+sed -E -i.bak 's#remotesql.com#remotemysql.com#' ../conf/local/local.json
+
+
+sed -E -i.bak 's#mariadb#phabricatordb.c6ggtjneld1s.us-east-1.rds.amazonaws.com#' /var/www/phabricator/conf/local/local.json
+sed -E -i.bak 's#0YC7I6vh74#user#' /var/www/phabricator/conf/local/local.jso
+sed -E -i.bak 's#IkdkaNv4Qu#bitnami1#' ../conf/local/local.json
+
+sed -E -i.bak 's#admin#root#' /var/www/phabricator/conf/local/local.json
+sed -E -i.bak 's#0YC7I6vh74#user#' /var/www/phabricator/conf/local/local.json
+sed -E -i.bak 's#IkdkaNv4Qu#bitnami1#' local.json
+
+sed -E -i.bak 's#bitnami1",#bitnami1"#' local.json
+
+echo "{"mysql.host" : "remotesql.com", "mysql.port" : "3306", "mysql.user" : "0YC7I6vh74", "mysql.pass" : "IkdkaNv4Qu", "mysql.db" : "0YC7I6vh74" }" >> local.json
+
+
+

@@ -2096,6 +2096,9 @@ abstract class PhabricatorEditEngine
 
       $this->setIsCreate(true);
       $object = $this->newEditableObjectFromConduit($raw_xactions);
+      if($raw_xactions['type'] == 'username'){
+        $user->setUsername($raw_xactions['value']);
+      }
     }
 
     $this->validateObject($object);
